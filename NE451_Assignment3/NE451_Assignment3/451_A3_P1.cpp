@@ -22,12 +22,14 @@ class Semiconductor {
 
         void setElectronDensity( double aElectronDensity ) {
             iElectronDensity = aElectronDensity;
-//            cout << "setElectronDensity: " << iElectronDensity << endl;
+            // p = ni^2/n
+            iHoleDensity = (iIntrinsicCarrierDensity*iIntrinsicCarrierDensity) / iElectronDensity;
         }
     
         void setHoleDensity( double aHoleDensity ) {
             iHoleDensity = aHoleDensity;
-//            cout << "setHoleDensity: " << iHoleDensity << endl;
+            // n = ni^2/p
+            iElectronDensity = (iIntrinsicCarrierDensity*iIntrinsicCarrierDensity) / iHoleDensity;
         }
 
         // one-element constructor that sets intrinsic carrier density
@@ -36,13 +38,6 @@ class Semiconductor {
         }
     
         void print() {
-            
-            // np = ni^2 -> n = ni^2/p ; p = ni^2/n
-            if ( !iElectronDensity )
-                iElectronDensity = (iIntrinsicCarrierDensity*iIntrinsicCarrierDensity) / iHoleDensity;
-            else
-                iHoleDensity = (iIntrinsicCarrierDensity*iIntrinsicCarrierDensity) / iElectronDensity;
-            
             cout << "Electron Density (n): " << iElectronDensity << endl;
             cout << "Hole Density (p): " << iHoleDensity << endl;
             cout << "Intrinsic Carrier Density (ni): " << iIntrinsicCarrierDensity << endl;
@@ -52,8 +47,8 @@ class Semiconductor {
 
 int main() {
     Semiconductor Silicon( 1.5e10 );
-//    Silicon.setElectronDensity( 1.e10 );
-    Silicon.setHoleDensity( 2.25e10 );
+    Silicon.setElectronDensity( 1.e10 );
+//    Silicon.setHoleDensity( 2.25e10 );
 
     Silicon.print( );
 }
