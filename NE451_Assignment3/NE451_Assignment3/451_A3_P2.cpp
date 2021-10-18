@@ -28,14 +28,14 @@ class Rectangle {
         }
         
         // 2 arg constructor setting length and width to user specified uLength/uWidth
-        Rectangle( double uLength, double uWidth ){
+        Rectangle( double uLength, double uWidth ) {
             iLength = uLength;
             iWidth = uWidth;
         }
     
         // void function to calculate area, printing it through cout
         void area() {
-            cout << getLength() * getWidth();
+            cout << getLength() * getWidth() << endl;
         }
 };
 
