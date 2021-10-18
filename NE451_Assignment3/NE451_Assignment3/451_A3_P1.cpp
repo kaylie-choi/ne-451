@@ -1,14 +1,8 @@
-//
 //  NE451 Assignment3 Problem 1
-//
 //  2021-10-16
-//  Kaylie Choi
-//  20692499
-//
+//  Kaylie Choi - 20692499
 
 #include <iostream>
-#include <math.h>
-
 using namespace std;
 
 class Semiconductor {
