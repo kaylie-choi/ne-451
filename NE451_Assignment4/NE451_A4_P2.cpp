@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "dislin.h"
-#include <math.h> 
 
 using namespace std;
 
@@ -16,37 +15,67 @@ class Gas {
   // VDW constants a and b
     double iA;
     double iB;
-    Gas(double aA, double aB)
+    Gas(double aA, double aB) : iA ( aA ), iB ( aB ) {};
 };
 
 
 class VanDerWaalsCalculator {
   public: 
-    Gas iGas;
-    float iVolume[100];
-    float iPressure[100];
-    float iTemperature;
-    float iNumberOfMoles;
+    Gas iGas; // initialize iGas in initialization list, not body of VanDerWallsCalculator constructor
+    double iVolume[100];
+    double iPressure[100];
+    double iTemperature;
+    double iNumberOfMoles;
     int iNumberOfPoints;
 
-    VanDerWaalsCalculator (
-      Gas aGas,
-      double aMinimumVolume,
-      double aMaximumVolume,
-      double aTemperature, 
-      double aNumberOfMoles,
-      int aNumberOfPoints
-    )
+  VanDerWaalsCalculator (
+    Gas aGas,
+    double aMinimumVolume,
+    double aMaximumVolume,
+    double aTemperature, 
+    double aNumberOfMoles,
+    int aNumberOfPoints ) : iGas( aGas ) {
+      iTemperature = aTemperature;
+      iNumberOfMoles = aNumberOfMoles;
+      iNumberOfPoints = aNumberOfPoints; 
 
-    // Use the Van der Waals formula to generate the pressure vector
-    void generatePressure(){
+      double delta = ( aMaximumVolume - aMinimumVolume ) / aNumberOfPoints;
+      cout << "delta: " << d << endl;
+
+      for ( int loop = 0; loop < iNumberOfPoints; loop++){
+        if ( loop == 0 ) {
+          iVolume[loop] = aMinimumVolume;
+        }
+        else {
+            iVolume[loop] = iVolume[loop - 1] + delta;
+        }    
+
+
+
+  }
+
+  // Use the Van der Waals formula to generate the pressure vector
+  void generatePressure( ) {
+    for ( int loop = 0; loop < iNumberOfPoints; loop++ ) {
       // P = (nRT/(V-nb)) - (an^2/v^2)
+      iPressure[loop] = (( iNumberOfMoles * R * iTemperature ) 
+                        - (( iGas.iA * iNumberOfMoles * iNumberOfMoles ) / ( iVolume[loop] * iVolume[loop] )) 
+                        * ( iVolume[loop] - ( iGas.iB * iNumberOfMoles )))
+                        / ( iVolume[loop] - ( iGas.iB * iNumberOfMoles ));
+    } 
+  }
 
+  // Graph the pressure as a function of volume
+  void draw( ) {
+    metafl("TIFF");
+    disini(); 
 
-    }
-
-    // Graph the pressure as a function of volume
-    void draw()
+    name("X-axis", "Volume (L)");
+    name("Y-axis", "Pressure (atm)");
+    
+    qplsca(iVolume, iPressure, iNumberOfPoints);
+    disfin();
+  }
 };
 
 main() {
@@ -54,13 +83,13 @@ main() {
   // b = 0.0024 L/mol
   Gas Oxygen(0.027, 0.0024);
 
-  float numberOfMoles = 1;
-  float minimumVolume = 1;
-  float maximumVolume = 10;
-  int numberOfPoints = 100;
-  float temperature = 300;
+  double minimumVolume = 1;
+  double maximumVolume = 10;
+  double temperature = 300;
+  double numberOfMoles = 1;
+  int numberOfPoints = 10; // 100
 
   VanDerWaalsCalculator VDW(Oxygen, minimumVolume, maximumVolume, temperature, numberOfMoles, numberOfPoints);
-  VDW.generatePressure();
+  cout << VDW.generatePressure();
   VDW.draw();
 }
