@@ -84,7 +84,7 @@ main() {
   double maximumVolume = 10;
   double temperature = 300;
   double numberOfMoles = 1;
-  int numberOfPoints = 10;
+  int numberOfPoints = 100;
 
   VanDerWaalsCalculator VDW(Oxygen, minimumVolume, maximumVolume, temperature, numberOfMoles, numberOfPoints);
   VDW.generatePressure();
