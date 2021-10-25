@@ -1,5 +1,5 @@
 //  NE451 Assignment 4 Problem 1
-//  2021-10-21
+//  2021-10-23
 //  Kaylie Choi - 20692499
 
 #include <iostream>
@@ -7,19 +7,28 @@ using namespace std;
 
 // a recursive fn that computes sqrt(2) for 1-10 terms 
 // in the continued fraction
-int main ( ) {
-  // values n between 1 and 10
-  int maxLoop = 10;
 
-  for ( int n = 1; n < maxLoop; n++ ){
-    double root = 0;
+double continuedFraction ( int n ) {
+  
+  const int maxIter = 10;
 
-    // fraction expansion of (sqrt(2) - 1)
-    for ( int loop = 0; loop < n; loop++ ){ 
-      root = 1. / ( 2. + root );
+  // for values n between 1 and 10
+    if ( n <= maxIter && n > 1 ) {
+        return ( 1 / ( 2 + continuedFraction( n - 1 ) ) );
     }
+    else {
+        return 1. / 2.;
+    }
+}
 
-    // add 1 back in to get sqrt(2)
-    cout << "n=" << n << ": " << 1. + root << endl; 
-  }
+int main () {
+
+  int n;
+  cout << "number of fractional terms, n: ";
+  cin >> n;
+  double approximation = continuedFraction(n);
+
+  // add 1 back in to get sqrt(2)
+  cout << "n = " << n << "  approximation = " << 1. + approximation << endl;
+
 }
