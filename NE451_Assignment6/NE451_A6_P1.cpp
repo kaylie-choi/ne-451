@@ -1,7 +1,3 @@
-//  NE451 Assignment 6 Problem 1
-//  2021-11-06
-//  Kaylie Choi - 20692499
-
 #include <iostream>
 #include "math.h"
 #include "dislin.h"
@@ -50,14 +46,14 @@ int main ( ) {
   // dislin plotting
 
   // graph #1 - derivative against xPow3
-  metafl( “XWIN” ); // write to terminal
+  metafl("TIFF"); // write to terminal
   disini(); // start plot
-  name( "Third Power of Step Length", “x” ); // x label
-  name( “Derivative”, “y” ); // y label
-  labels( “EXP”, ”xy” ); // exponential format
+  name("Third Power of Step Length", "x"); // x label
+  name("Derivative", "y"); // y label
+  labels("EXP", "xy"); // exponential format
   incmrk( 1 ); // marker every 1 point
-  setscl( xPow3, 10, “x” ); // auto scale axes
-  setscl( y, 10, “y” );
+  setscl( xPow3, 10, "x" ); // auto scale axes
+  setscl( y, 10, "y" );
   double minX, maxX, minY, maxY, stepX, stepY;
   graf( minX, maxX, minX, stepX, minY, maxY, minY, stepY ); // draw axes 
   curve( xPow3, y, 10 );  // plot curve
@@ -65,30 +61,31 @@ int main ( ) {
 
 
   // graph #2 - derivative against xPow4
-  metafl( “XWIN” ); // write to terminal
+  metafl("TIFF"); // write to terminal
   disini(); // start plot
-  name( "Fourth Power of Step Length", “x” ); // x label
-  name( “Derivative”, “y” ); // y label
-  labels( “EXP”, ”xy” ); // exponential format
+  name( "Fourth Power of Step Length", "x" ); // x label
+  name( "Derivative", "y" ); // y label
+  labels( "EXP", "xy" ); // exponential format
   incmrk( 1 ); // marker every 1 point
-  setscl( xPow4, 10, “x” ); // auto scale axes
-  setscl( y, 10, “y” );
-  double minX, maxX, minY, maxY, stepX, stepY;
-  graf( minX, maxX, minX, stepX, minY, maxY, minY, stepY ); // draw axes 
+  setscl( xPow4, 10, "x" ); // auto scale axes
+  setscl( y, 10, "y" );
+  double minX2, maxX2, minY2, maxY2, stepX2, stepY2;
+  graf( minX2, maxX2, minX2, stepX2, minY2, maxY2, minY2, stepY2 ); // draw axes 
   curve( xPow4, y, 10 );  // plot curve
   disfin(); // terminate plot
 
   // graph #3 - x-logdelx; y-error
-  metafl( “XWIN” ); // write to terminal
+  metafl( "XWIN"); // write to terminal
   disini(); // start plot
-  name( "Log(delta X)", “x” ); // x label
-  name( "Logarithm of Error |df/dx - 6|" , “y” ); // y label
-  labels( LOG, ”xy” ); // exponential format
+  name( "Log(delta X)", "x" ); // x label
+  name( "Logarithm of Error |df/dx - 6|" , "y" ); // y label
+  labels( "EXP", "xy" ); // exponential format
   incmrk( 1 ); // marker every 1 point
-  setscl( logDeltaX, 10, “x” ); // auto scale axes
-  setscl( error, 10, “y” );
-  double minX, maxX, minY, maxY, stepX, stepY;
-  graf( minX, maxX, minX, stepX, minY, maxY, minY, stepY ); // draw axes 
+  setscl( logDeltaX, 10, "x" ); // auto scale axes
+  setscl( error, 10, "y" );
+  double minX3, maxX3, minY3, maxY3, stepX3, stepY3;
+  graf( minX3, maxX3, minX3, stepX3, minY3, maxY3, minY3, stepY3 ); // draw axes 
   curve( logDeltaX, error, 10 );  // plot curve
   disfin(); // terminate plot
 }
+
