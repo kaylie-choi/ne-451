@@ -38,19 +38,20 @@ int main ( ) {
     xPow3[loop] = pow(DC1.dx( ), 3); // deltaX raised to 3rd power
     xPow4[loop] = pow(DC1.dx( ), 4); //deltaX raised to 4th power
     y[loop] = DC1.deriv( 1.0 ); 
-    error[loop] = log(abs(DC1.deriv( 1.0 ) - 6)); // verify 4th order accuracy
-    logDeltaX[loop] = log(DC1.dx()); //log(deltaX) ; slope should be 4 near origin
+    error[loop] = log(fabs(DC1.deriv( 1.0 ) - 6)); // verify 4th order accuracy
+    logDeltaX[loop] = log(DC1.dx( )); //log(deltaX) ; slope should be 4 near origin
     DC1.setDx( DC1.dx( ) / 1.3 ); 
   }
 
+	
   // dislin plotting
 
   // graph #1 - derivative against xPow3
   metafl("TIFF"); // write to terminal
   disini(); // start plot
-  name("Third Power of Step Length", "x"); // x label
-  name("Derivative", "y"); // y label
-  labels("EXP", "xy"); // exponential format
+  name( "Third Power of Step Length", "x" ); // x label
+  name( "Derivative", "y" ); // y label
+  labels( "EXP", "xy" ); // exponential format
   incmrk( 1 ); // marker every 1 point
   setscl( xPow3, 10, "x" ); // auto scale axes
   setscl( y, 10, "y" );
@@ -61,7 +62,7 @@ int main ( ) {
 
 
   // graph #2 - derivative against xPow4
-  metafl("TIFF"); // write to terminal
+  metafl( "TIFF" ); // write to terminal
   disini(); // start plot
   name( "Fourth Power of Step Length", "x" ); // x label
   name( "Derivative", "y" ); // y label
@@ -75,10 +76,10 @@ int main ( ) {
   disfin(); // terminate plot
 
   // graph #3 - x-logdelx; y-error
-  metafl( "XWIN"); // write to terminal
+  metafl( "TIFF" ); // write to terminal
   disini(); // start plot
-  name( "Log(delta X)", "x" ); // x label
-  name( "Logarithm of Error |df/dx - 6|" , "y" ); // y label
+  name( "Logarithm of deltaX", "x" ); // x label
+  name( "Logarithm of Error", "y" ); // y label
   labels( "EXP", "xy" ); // exponential format
   incmrk( 1 ); // marker every 1 point
   setscl( logDeltaX, 10, "x" ); // auto scale axes
