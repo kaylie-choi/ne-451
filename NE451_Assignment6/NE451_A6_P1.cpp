@@ -50,7 +50,7 @@ int main ( ) {
 	
   // DISLIN plotting
   // graph #1 - derivative against xPow3
-  metafl("TIFF"); // save as TIFF graphic
+  metafl( "TIFF" ); // save as TIFF graphic
   disini(); // start plot
   name( "Third Power of Step Length", "x" ); // x label
   name( "Derivative", "y" ); // y label
