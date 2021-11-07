@@ -1,3 +1,7 @@
+//  NE451 Assignment 6 Problem 1
+//  2021-11-06
+//  Kaylie Choi - 20692499
+
 #include <iostream>
 #include "math.h"
 #include "dislin.h"
