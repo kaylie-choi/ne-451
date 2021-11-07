@@ -26,6 +26,7 @@ class DerivativeCalculator {
   DerivativeCalculator ( double aDx, double aF( double ) ) : iDx( aDx ) { iF = aF; }
 };
 
+
 // f(x) = x^4
 double fourth ( double aX ) { 
   return pow( aX , 4 ); 

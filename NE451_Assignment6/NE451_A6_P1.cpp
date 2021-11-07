@@ -27,6 +27,7 @@ class DerivativeCalculator {
 };
 
 
+// f(x) = x^6
 double sixth ( double aX ) { 
   return pow( aX , 6 ); 
 }
