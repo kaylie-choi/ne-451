@@ -9,13 +9,13 @@
 using namespace std;
 
 class DerivativeCalculator {
-  double (*iF)( double );  // setting point variable
+  double (*iF)( double );  // setting point variable for f(x)
   double iDx; // x
   public:
-  void setDx( double aDx ) { iDx = aDx; } 
-  double dx( ) { 
-    return iDx; 
-  }
+    void setDx( double aDx ) { iDx = aDx; } 
+    double dx( ) { 
+      return iDx; 
+    }
   
   // finite-difference approximation
   double deriv( double aX ) {
@@ -34,7 +34,7 @@ double sixth ( double aX ) {
 
 
 int main ( ) {
-  double deltaX = 0.1; // delta x
+  double deltaX = 0.1;
   DerivativeCalculator DC1( deltaX, sixth ); 
   double xPow3[10], xPow4[10], y[10], error[10], logDeltaX[10]; // array definition
   
@@ -48,10 +48,9 @@ int main ( ) {
   }
 
 	
-  // dislin plotting
-
+  // DISLIN plotting
   // graph #1 - derivative against xPow3
-  metafl("TIFF"); // write to terminal
+  metafl("TIFF"); // save as TIFF graphic
   disini(); // start plot
   name( "Third Power of Step Length", "x" ); // x label
   name( "Derivative", "y" ); // y label
@@ -66,31 +65,31 @@ int main ( ) {
 
 
   // graph #2 - derivative against xPow4
-  metafl( "TIFF" ); // write to terminal
-  disini(); // start plot
-  name( "Fourth Power of Step Length", "x" ); // x label
-  name( "Derivative", "y" ); // y label
-  labels( "EXP", "xy" ); // exponential format
-  incmrk( 1 ); // marker every 1 point
-  setscl( xPow4, 10, "x" ); // auto scale axes
+  metafl( "TIFF" );
+  disini();
+  name( "Fourth Power of Step Length", "x" );
+  name( "Derivative", "y" );
+  labels( "EXP", "xy" );
+  incmrk( 1 );
+  setscl( xPow4, 10, "x" );
   setscl( y, 10, "y" );
   double minX2, maxX2, minY2, maxY2, stepX2, stepY2;
-  graf( minX2, maxX2, minX2, stepX2, minY2, maxY2, minY2, stepY2 ); // draw axes 
-  curve( xPow4, y, 10 );  // plot curve
-  disfin(); // terminate plot
+  graf( minX2, maxX2, minX2, stepX2, minY2, maxY2, minY2, stepY2 ); 
+  curve( xPow4, y, 10 );
+  disfin();
 
   // graph #3 - x-logdelx; y-error
-  metafl( "TIFF" ); // write to terminal
-  disini(); // start plot
-  name( "Logarithm of deltaX", "x" ); // x label
-  name( "Logarithm of Error", "y" ); // y label
-  labels( "EXP", "xy" ); // exponential format
-  incmrk( 1 ); // marker every 1 point
-  setscl( logDeltaX, 10, "x" ); // auto scale axes
+  metafl( "TIFF" );
+  disini();
+  name( "Logarithm of deltaX", "x" );
+  name( "Logarithm of Error", "y" );
+  labels( "EXP", "xy" );
+  incmrk( 1 );
+  setscl( logDeltaX, 10, "x" );
   setscl( error, 10, "y" );
   double minX3, maxX3, minY3, maxY3, stepX3, stepY3;
-  graf( minX3, maxX3, minX3, stepX3, minY3, maxY3, minY3, stepY3 ); // draw axes 
-  curve( logDeltaX, error, 10 );  // plot curve
-  disfin(); // terminate plot
+  graf( minX3, maxX3, minX3, stepX3, minY3, maxY3, minY3, stepY3 );
+  curve( logDeltaX, error, 10 );
+  disfin();
 }
 
