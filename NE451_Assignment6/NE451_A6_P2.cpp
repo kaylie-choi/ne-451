@@ -56,7 +56,7 @@ int main ( ) {
   name( “Derivative”, “y” ); // y label
   labels( “EXP”, ”xy” ); // exponential format
   incmrk( 1 ); // marker every 1 point
-  setscl( x, 10, “x” ); // auto scale axes
+  setscl( xPow3, 10, “x” ); // auto scale axes
   setscl( y, 10, “y” );
   double minX, maxX, minY, maxY, stepX, stepY;
   graf( minX, maxX, minX, stepX, minY, maxY, minY, stepY ); // draw axes 
@@ -71,7 +71,7 @@ int main ( ) {
   name( “Derivative”, “y” ); // y label
   labels( “EXP”, ”xy” ); // exponential format
   incmrk( 1 ); // marker every 1 point
-  setscl( x, 10, “x” ); // auto scale axes
+  setscl( xPow4, 10, “x” ); // auto scale axes
   setscl( y, 10, “y” );
   double minX, maxX, minY, maxY, stepX, stepY;
   graf( minX, maxX, minX, stepX, minY, maxY, minY, stepY ); // draw axes 
@@ -85,8 +85,8 @@ int main ( ) {
   name( "Logarithm of Error |df/dx - 4|" , “y” ); // y label
   labels( LOG, ”xy” ); // exponential format
   incmrk( 1 ); // marker every 1 point
-  setscl( x, 10, “x” ); // auto scale axes
-  setscl( y, 10, “y” );
+  setscl( logDeltaX, 10, “x” ); // auto scale axes
+  setscl( error, 10, “y” );
   double minX, maxX, minY, maxY, stepX, stepY;
   graf( minX, maxX, minX, stepX, minY, maxY, minY, stepY ); // draw axes 
   curve( logDeltaX, error, 10 );  // plot curve
