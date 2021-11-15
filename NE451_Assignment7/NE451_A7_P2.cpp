@@ -49,6 +49,7 @@ class IntegralCalculator {
       cout << "Left limit: " << iLeftLim << endl;
       cout << "Right limit: " << iRightLim << endl;
       cout << "Number of intervals: " << iNumIntervals << endl;
+      cout << "Integration interval: " << iDx << endl;
       cout << "Integral: " << iResult << endl;
     }
 };
@@ -82,5 +83,4 @@ int main() {
   name( "Logarithm of Error", "y" ); // y label
   qplsa(logX, error, 10); // quick scatter plot
   disfin(); // terminate plot
-
 }
