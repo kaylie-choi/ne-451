@@ -80,7 +80,7 @@ int main() {
   disini(); // start plot
   name( "Logarithm of Step Length", "x" ); // x label
   name( "Logarithm of Error", "y" ); // y label
-  qplsa(x, error, 10); // quick scatter plot
+  qplsa(logX, error, 10); // quick scatter plot
   disfin(); // terminate plot
 
 }
