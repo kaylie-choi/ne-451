@@ -75,7 +75,7 @@ int main() {
     IC1.setNumIntervals(IC1.numIntervals() * 1.3); // multiply deltaX by 1.3 for each iteration
   }
   
-  cout << "slope: " << (error[5] - error[4])/(logX[5] - logX[4]) << endl;
+  cout << "Slope: " << (error[7] - error[3])/(logX[7] - logX[3]) << endl;
   
   // DISLIN plotting 
   // graphically determine order of error
