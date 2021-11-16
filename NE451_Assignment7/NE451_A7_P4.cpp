@@ -37,7 +37,7 @@ int main() {
     logX[loop] = log(deltaX);
     root[loop] = newton(func, a, aEps, deltaX);
     
-    deltaX = deltaX / sqrt(10);
+    deltaX = deltaX / pow(10, 0.5);
   }
 
   // DISLIN plotting
