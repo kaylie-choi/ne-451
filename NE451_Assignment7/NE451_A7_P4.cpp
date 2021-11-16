@@ -13,51 +13,44 @@ double func( double aD ) {
   return pow( aD , 3 ); 
 }
 
-double deriv (double aF(double), double aX) {
-  double deltaX = 1.e-4;
+double deriv (double aF(double), double aX, double deltaX) {
   return (aF(aX + deltaX) - aF(aX - deltaX)) / (2. * deltaX);
 }
 
 // recursive newton's method
-double newton(double aF(double), double a, double aEps) {
-  double del = - aF(a) / deriv(aF, a);
+double newton(double aF(double), double a, double aEps, double deltaX) {
+  double del = - aF(a) / deriv(aF, a, deltaX);
   a += del;
   if (fabs(del) < aEps)
     return a;
   else
-    return newton(aF, a, aEps);
+    return newton(aF, a, aEps, deltaX);
 }
 
 int main() {
-  double deltaXx[9] = {0.1, 0.1/pow(10, 1/2), 0.01, 0.01/pow(10, 1/2), 0.001, 0.001/pow(10, 1/2), 0.0001, 0.0001/pow(10, 1/2), 0.00001 };
-  double root[9];
-
-  int i = 0;
-  while(i < 9) {
-    root[i] = newton(func, 0.1, deltaXx[i] ); //y
-    i++;
-  }
+	double aEps = 0.001;
+	double a = 0.1;
+	double deltaX = 0.1;
   
-  cout << deltaXx[0] << endl;
-  cout << root[0] << endl;
-  cout << deltaXx[1] << endl;
-  cout << root[1] << endl;
-  cout << deltaXx[2] << endl;
-  cout << root[2] << endl;
-  cout << deltaXx[3] << endl;
-  cout << root[3] << endl;
+  double logX[10], root[10];
+  for ( int loop = 0; loop < 10; loop++ ) {
+    logX[loop] = log(deltaX);
+    root[loop] = newton(func, a, aEps, deltaX);
+    
+    deltaX = deltaX / sqrt(10);
+  }
 
   // DISLIN plotting
-  // metafl( "XWIN" );
+  metafl( "TIFF" );
   disini();
   name( "Logarithm of deltaX", "x" );
-  name( "Logarithm of Error", "y" );
-  labels( "EXP", "xy" );
+  name( "Root Value", "y" );
+  labels( "LOG", "x" );
   incmrk( 1 );
-  setscl( deltaXx, 9, "x" );
-  setscl( root, 9, "y" );
+  setscl( logX, 10, "x" );
+  setscl( root, 10, "y" );
   double minX, maxX, minY, maxY, stepX, stepY;
   graf( minX, maxX, minX, stepX, minY, maxY, minY, stepY );
-  curve( deltaXx, root, 9 );
+  curve( logX, root, 10 );
   disfin();
 }
