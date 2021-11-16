@@ -72,15 +72,17 @@ int main() {
     IC1.integrate();
 
     error[loop] = log(fabs(IC1.result() - 1.0 / 6.0)); // given integral of fn is x/6
-    IC1.setNumIntervals(IC1.numIntervals() * 1.3); // divide deltaX by 1.3 for each iteration
+    IC1.setNumIntervals(IC1.numIntervals() * 1.3); // multiply deltaX by 1.3 for each iteration
   }
- 
+  
+  cout << "slope: " << (error[5] - error[4])/(logX[5] - logX[4]) << endl;
+  
   // DISLIN plotting 
   // graphically determine order of error
   metafl( "TIFF" ); // save as TIFF graphic
   disini(); // start plot
   name( "Logarithm of Step Length", "x" ); // x label
   name( "Logarithm of Error", "y" ); // y label
-  qplsa(logX, error, 10); // quick scatter plot
+  qplsca(logX, error, 10); // quick scatter plot
   disfin(); // terminate plot
 }
