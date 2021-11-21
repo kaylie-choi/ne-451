@@ -15,7 +15,7 @@ const complex<double> CI = complex<double>(0.0, 1.0); // CI = i
 void gauss( complex<double> aA[ ][n], complex<double> aC[ ], complex<double> aB[ ] ) {
   // Forward elimination
   for ( int i = 0; i < n; i ++ ) {
-    complex<double> diag = aA[i][i]; // define somehting, not txtbook
+    complex<double> diag = aA[i][i]; // identify diagonal of 3x3 aA matrix
     
     if ( !abs(diag) ) exit( 0 );
     for ( int j = i + 1; j < n; j++ ) {
