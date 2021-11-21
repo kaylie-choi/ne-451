@@ -28,16 +28,17 @@ double newton(double aF(double), double a, double aEps, double deltaX) {
 }
 
 int main() {
+	double a = 0.1; // starting value of x
 	double aEps = 0.001;
-	double a = 0.1;
-	double deltaX = 0.1;
+	double deltaX = 0.1; // starting value of deltaX
   
-  double logX[10], root[10];
+  double logX[10], root[10]; // array definition
   for ( int loop = 0; loop < 10; loop++ ) {
     logX[loop] = log(deltaX);
     root[loop] = newton(func, a, aEps, deltaX);
     
-    deltaX = deltaX / pow(10, 0.5);
+    // dividing deltaX by sqrt(10) for each iteration 
+    deltaX = deltaX / pow(10, 0.5); 
   }
 
   // DISLIN plotting
