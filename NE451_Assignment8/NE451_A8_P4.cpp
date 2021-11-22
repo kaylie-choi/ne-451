@@ -65,16 +65,18 @@ int main() {
     double MCI = monteCarloIntegral( a, b, numEvaluations);
 
     logEvalPts[numPoints] = log(numEvaluations);
-    logError[numPoints] = log(fabs(MCI * 4 - 3.1415)); 
 
+    // multiply by 4 assuming symmetry across 4 quadrants since defined x limits for only quadrant I
+    logError[numPoints] = log(fabs(MCI * 4 - 3.1415)); 
     numPoints++;
   }
   
-  metafl("TIFF");
-  disini();
-  name("Logarithm of Number of Evaluations", "x");
-  name("Logarithm of Error", "y");
-  labels("LOG", "x");
-  qplsca ( logEvalPts, logError, 10 );
-  disfin();
+  // DISLIN plotting
+  metafl("TIFF"); // save as TIFF graphic
+  disini(); // start plot
+  name("Logarithm of Number of Evaluations", "x"); // x label
+  name("Logarithm of Error", "y"); // y label
+  labels("LOG", "x"); // log format
+  qplsca ( logEvalPts, logError, 10 ); // quick scatter plot
+  disfin(); // terminate plot
 }
