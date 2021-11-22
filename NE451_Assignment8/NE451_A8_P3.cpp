@@ -28,7 +28,7 @@ int main( ) {
     // v[i] = v[i - 1] - (a*pow(x[i-1], 3) + b*x[i-1] + c*v[i-1] + F*cos(t)) * dt; 
 
     // x[i]
-    v[i] = v[i - 1] - (a*pow(x[i], 3) + b*x[i] + c*v[i] + F*cos(t)) * dt; 
+    v[i] = v[i - 1] - (a*pow(x[i], 3) + b*x[i] + c*v[i - 1] + F*cos(t)) * dt; 
 
     t += dt / 2;
   }
