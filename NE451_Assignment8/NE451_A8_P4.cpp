@@ -4,7 +4,8 @@
 
 #include <iostream>
 #include "math.h"
-// #include "dislin.h"
+#include "dislin.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -63,10 +64,17 @@ int main() {
     numEvaluations *= 2; 
     double MCI = monteCarloIntegral( a, b, numEvaluations);
 
-    logEvalPts[numPoints] = log10(numEvaluations);
-    logError[numPoints] = log10(fabs(MCI * 4 - M_PI));
+    logEvalPts[numPoints] = log(numEvaluations);
+    logError[numPoints] = log(fabs(MCI * 4 - 3.1415)); 
+
+    numPoints++;
   }
-
-  // qplsca ( resX, resY, numPoints );
-
+  
+  metafl("TIFF");
+  disini();
+  name("Logarithm of Number of Evaluations", "x");
+  name("Logarithm of Error", "y");
+  labels("LOG", "x");
+  qplsca ( logEvalPts, logError, 10 );
+  disfin();
 }
