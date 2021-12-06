@@ -16,7 +16,7 @@ class C {
 class D : public C { 
   public:
     int i;
-    void print (“ in D” );
+    void print(" in D" );
 };
 
 class E : public C {
