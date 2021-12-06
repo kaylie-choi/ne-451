@@ -20,5 +20,5 @@ class Derived : public Base {
 int main() {
   Derived D1; 
   Base* B1 = &D1; 
-  B1 –>print();
+  B1 -> print();
 }

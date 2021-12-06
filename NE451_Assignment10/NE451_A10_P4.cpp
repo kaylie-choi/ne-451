@@ -33,8 +33,8 @@ class E : public B {
 int main ( ) { 
   D D1 ;
   D* D2 = &D1; 
-  D2 –>x = 2;
-  D2 –>print(2); 
+  D2 -> x = 2;
+  D2 -> print(2); 
   E* E1 = (E*) D2;
-  E1 –>print(); 
+  E1 -> print(); 
 }

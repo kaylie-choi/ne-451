@@ -25,7 +25,7 @@ template <class T,const int n> class MyClass {
 };
 
 int main(){
-  int i = 10;
+  const int i = 10;
   MyClass<String, i> MyClass1;
   String String1("string1");
   String String2("string2"); 
